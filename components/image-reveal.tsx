@@ -33,10 +33,11 @@ export function ImageReveal({
   return (
     <motion.div
       ref={ref}
-      className={`relative overflow-hidden ${className}`}
+      className={`overflow-hidden ${fill ? "absolute inset-0" : "relative"} ${className}`}
       onClick={onClick}
       role={onClick ? "button" : undefined}
       tabIndex={onClick ? 0 : undefined}
+      style={onClick ? { cursor: "pointer" } : undefined}
     >
       {/* Mask overlay that reveals */}
       <motion.div
@@ -47,7 +48,7 @@ export function ImageReveal({
         style={{ transformOrigin: "right" }}
       />
       <motion.div
-        className={fill ? "relative w-full h-full" : undefined}
+        className={fill ? "absolute inset-0" : undefined}
         initial={{ scale: 1.3, opacity: 0 }}
         animate={isInView ? { scale: 1, opacity: 1 } : { scale: 1.3, opacity: 0 }}
         transition={{ duration: 1.2, ease: [0.77, 0, 0.175, 1], delay: 0.4 }}

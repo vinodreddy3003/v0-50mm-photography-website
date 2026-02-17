@@ -64,7 +64,6 @@ export function GallerySection() {
                   alt={img.alt}
                   fill
                   sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                  className="w-full h-full"
                   onClick={() => openLightbox(i)}
                 />
                 <div className="absolute inset-0 bg-background/0 group-hover:bg-background/40 transition-all duration-500 flex items-end pointer-events-none">
