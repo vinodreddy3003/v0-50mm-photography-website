@@ -50,20 +50,22 @@ export function ImageReveal({
 
       {/* Animated image container */}
       <motion.div
-        style={{ position: "relative", width: "100%", height: "100%" }}
+        className="w-full h-full"
         initial={{ scale: 1.3, opacity: 0 }}
         animate={isInView ? { scale: 1, opacity: 1 } : { scale: 1.3, opacity: 0 }}
         transition={{ duration: 1.2, ease: [0.77, 0, 0.175, 1], delay: 0.4 }}
       >
         {fill ? (
-          <Image
-            src={src}
-            alt={alt}
-            fill
-            sizes={sizes || "(max-width: 768px) 100vw, 50vw"}
-            className="object-cover"
-            priority={priority}
-          />
+          <div style={{ position: "relative", width: "100%", height: "100%" }}>
+            <Image
+              src={src}
+              alt={alt}
+              fill
+              sizes={sizes || "(max-width: 768px) 100vw, 50vw"}
+              className="object-cover"
+              priority={priority}
+            />
+          </div>
         ) : (
           <Image
             src={src}

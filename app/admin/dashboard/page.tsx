@@ -262,16 +262,17 @@ export default function AdminDashboardPage() {
                 <motion.div
                   key={img.src}
                   className="group aspect-square overflow-hidden bg-muted border border-border/50"
-                  style={{ position: "relative" }}
                   layout
                 >
-                  <Image
-                    src={img.src}
-                    alt={img.alt}
-                    fill
-                    sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
-                    className="object-cover"
-                  />
+                  <div style={{ position: "relative", width: "100%", height: "100%" }}>
+                    <Image
+                      src={img.src}
+                      alt={img.alt}
+                      fill
+                      sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
+                      className="object-cover"
+                    />
+                  </div>
                   <div className="absolute inset-0 bg-background/0 group-hover:bg-background/60 transition-all duration-300 flex flex-col items-center justify-center gap-2 opacity-0 group-hover:opacity-100">
                     <p className="text-xs text-foreground font-medium px-2 text-center truncate max-w-full">
                       {img.title}

@@ -18,20 +18,22 @@ export function HeroSection() {
   return (
     <section ref={ref} className="relative h-screen overflow-hidden">
       {/* Parallax background */}
-      <motion.div style={{ position: "absolute", inset: 0, y }}>
-        <div style={{ position: "relative", width: "100%", height: "100%" }}>
-          <Image
-            src="/images/hero-bg.jpg"
-            alt="Cinematic photography studio"
-            fill
-            sizes="100vw"
-            className="object-cover"
-            priority
-          />
-        </div>
+      <div className="absolute inset-0">
+        <motion.div className="w-full h-full" style={{ y }}>
+          <div style={{ position: "relative", width: "100%", height: "100%" }}>
+            <Image
+              src="/images/hero-bg.jpg"
+              alt="Cinematic photography studio"
+              fill
+              sizes="100vw"
+              className="object-cover"
+              priority
+            />
+          </div>
+        </motion.div>
         <div className="absolute inset-0 bg-background/60" />
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-background" />
-      </motion.div>
+      </div>
 
       {/* Content */}
       <motion.div

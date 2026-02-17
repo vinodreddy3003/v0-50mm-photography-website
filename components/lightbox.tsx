@@ -57,21 +57,22 @@ export function Lightbox({ images, currentIndex, isOpen, onClose, onPrev, onNext
           <motion.div
             key={currentIndex}
             className="w-[90vw] h-[80vh] max-w-5xl"
-            style={{ position: "relative" }}
             initial={{ scale: 0.9, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             exit={{ scale: 0.9, opacity: 0 }}
             transition={{ duration: 0.3 }}
             onClick={(e) => e.stopPropagation()}
           >
-            <Image
-              src={current.src}
-              alt={current.alt}
-              fill
-              sizes="90vw"
-              className="object-contain"
-              priority
-            />
+            <div style={{ position: "relative", width: "100%", height: "100%" }}>
+              <Image
+                src={current.src}
+                alt={current.alt}
+                fill
+                sizes="90vw"
+                className="object-contain"
+                priority
+              />
+            </div>
             {current.title && (
               <div className="absolute bottom-0 left-0 right-0 bg-background/70 backdrop-blur-md p-4 text-center">
                 <p className="font-serif text-lg text-foreground">{current.title}</p>
