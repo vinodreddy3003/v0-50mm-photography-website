@@ -20,7 +20,7 @@ export function SiteWrapper({ children, showLoading = false }: SiteWrapperProps)
       <CustomCursor />
       <ScrollProgress />
       <Navbar />
-      <main>{children}</main>
+      <main className="relative">{children}</main>
       <Footer />
       <SoundToggle />
     </>
