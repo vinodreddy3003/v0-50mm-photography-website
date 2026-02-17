@@ -15,14 +15,14 @@ interface SiteWrapperProps {
 
 export function SiteWrapper({ children, showLoading = false }: SiteWrapperProps) {
   return (
-    <>
+    <div style={{ position: "relative" }}>
       {showLoading && <LoadingScreen />}
       <CustomCursor />
       <ScrollProgress />
       <Navbar />
-      <main className="relative">{children}</main>
+      <main>{children}</main>
       <Footer />
       <SoundToggle />
-    </>
+    </div>
   )
 }

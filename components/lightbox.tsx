@@ -56,7 +56,8 @@ export function Lightbox({ images, currentIndex, isOpen, onClose, onPrev, onNext
 
           <motion.div
             key={currentIndex}
-            className="relative w-[90vw] h-[80vh] max-w-5xl"
+            className="w-[90vw] h-[80vh] max-w-5xl"
+            style={{ position: "relative" }}
             initial={{ scale: 0.9, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             exit={{ scale: 0.9, opacity: 0 }}

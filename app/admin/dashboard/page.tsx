@@ -261,7 +261,8 @@ export default function AdminDashboardPage() {
               {data.images.map((img) => (
                 <motion.div
                   key={img.src}
-                  className="relative group aspect-square overflow-hidden bg-muted border border-border/50"
+                  className="group aspect-square overflow-hidden bg-muted border border-border/50"
+                  style={{ position: "relative" }}
                   layout
                 >
                   <Image

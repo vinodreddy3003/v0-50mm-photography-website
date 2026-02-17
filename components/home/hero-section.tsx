@@ -11,7 +11,6 @@ export function HeroSection() {
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["start start", "end start"],
-    layoutEffect: false,
   })
   const y = useTransform(scrollYProgress, [0, 1], ["0%", "30%"])
   const opacity = useTransform(scrollYProgress, [0, 0.8], [1, 0])
@@ -19,15 +18,17 @@ export function HeroSection() {
   return (
     <section ref={ref} className="relative h-screen overflow-hidden">
       {/* Parallax background */}
-      <motion.div className="absolute inset-0" style={{ y }}>
-        <Image
-          src="/images/hero-bg.jpg"
-          alt="Cinematic photography studio"
-          fill
-          sizes="100vw"
-          className="object-cover"
-          priority
-        />
+      <motion.div style={{ position: "absolute", inset: 0, y }}>
+        <div style={{ position: "relative", width: "100%", height: "100%" }}>
+          <Image
+            src="/images/hero-bg.jpg"
+            alt="Cinematic photography studio"
+            fill
+            sizes="100vw"
+            className="object-cover"
+            priority
+          />
+        </div>
         <div className="absolute inset-0 bg-background/60" />
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-background" />
       </motion.div>

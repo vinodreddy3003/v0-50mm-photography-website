@@ -31,24 +31,26 @@ export function ImageReveal({
   const isInView = useInView(ref, { once: true, margin: "-100px" })
 
   return (
-    <motion.div
+    <div
       ref={ref}
-      className={`overflow-hidden ${fill ? "absolute inset-0" : "relative"} ${className}`}
+      className={`overflow-hidden ${className}`}
       onClick={onClick}
       role={onClick ? "button" : undefined}
       tabIndex={onClick ? 0 : undefined}
-      style={onClick ? { cursor: "pointer" } : undefined}
+      style={{ position: "relative", width: "100%", height: "100%" }}
     >
-      {/* Mask overlay that reveals */}
+      {/* Gold mask overlay that wipes away */}
       <motion.div
-        className="absolute inset-0 bg-primary z-10"
+        className="bg-primary"
+        style={{ position: "absolute", inset: 0, zIndex: 10, transformOrigin: "right" }}
         initial={{ scaleX: 1 }}
         animate={isInView ? { scaleX: 0 } : { scaleX: 1 }}
         transition={{ duration: 1, ease: [0.77, 0, 0.175, 1], delay: 0.2 }}
-        style={{ transformOrigin: "right" }}
       />
+
+      {/* Animated image container */}
       <motion.div
-        className={fill ? "absolute inset-0" : undefined}
+        style={{ position: "relative", width: "100%", height: "100%" }}
         initial={{ scale: 1.3, opacity: 0 }}
         animate={isInView ? { scale: 1, opacity: 1 } : { scale: 1.3, opacity: 0 }}
         transition={{ duration: 1.2, ease: [0.77, 0, 0.175, 1], delay: 0.4 }}
@@ -74,6 +76,6 @@ export function ImageReveal({
           />
         )}
       </motion.div>
-    </motion.div>
+    </div>
   )
 }
