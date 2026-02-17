@@ -1,0 +1,113 @@
+{
+  "categories": [
+    {
+      "id": "wedding",
+      "name": "Wedding Shoots",
+      "description": "Capturing the magic of your special day"
+    },
+    {
+      "id": "engagement",
+      "name": "Engagement Shoots",
+      "description": "Celebrating your love story"
+    },
+    {
+      "id": "prewedding",
+      "name": "Pre-wedding Shoots",
+      "description": "Romantic moments before the big day"
+    },
+    {
+      "id": "birthday",
+      "name": "Birthday Shoots",
+      "description": "Joyful celebrations worth remembering"
+    },
+    {
+      "id": "modeling",
+      "name": "Modeling Shoots",
+      "description": "Professional portfolio and editorial work"
+    },
+    {
+      "id": "other",
+      "name": "Other Shoots",
+      "description": "Creative and special occasion photography"
+    }
+  ],
+  "defaultImages": [
+    {
+      "id": "1",
+      "src": "/images/wedding-1.jpg",
+      "alt": "Wedding ceremony with golden light",
+      "category": "wedding",
+      "title": "Golden Vows"
+    },
+    {
+      "id": "2",
+      "src": "/images/engagement-1.jpg",
+      "alt": "Engagement ring exchange moment",
+      "category": "engagement",
+      "title": "Promise of Forever"
+    },
+    {
+      "id": "3",
+      "src": "/images/prewedding-1.jpg",
+      "alt": "Pre-wedding couple in garden",
+      "category": "prewedding",
+      "title": "Garden Romance"
+    },
+    {
+      "id": "4",
+      "src": "/images/birthday-1.jpg",
+      "alt": "Birthday celebration photography",
+      "category": "birthday",
+      "title": "Celebration Moments"
+    },
+    {
+      "id": "5",
+      "src": "/images/modeling-1.jpg",
+      "alt": "Professional modeling portfolio shot",
+      "category": "modeling",
+      "title": "Editorial Edge"
+    },
+    {
+      "id": "6",
+      "src": "/images/cover-model.png",
+      "alt": "Fashion editorial cover shoot",
+      "category": "modeling",
+      "title": "Cover Story"
+    }
+  ],
+  "team": [
+    {
+      "name": "Sairam",
+      "role": "Founder & Photographer",
+      "image": "/images/portfolio-team.png"
+    },
+    {
+      "name": "Bhavani",
+      "role": "Creative Partner",
+      "image": "/images/portfolio-team.png"
+    }
+  ],
+  "testimonials": [
+    {
+      "name": "Priya & Rahul",
+      "text": "50mm Photography captured our wedding day perfectly. Every emotion, every detail - it was like reliving the day through their photos.",
+      "event": "Wedding"
+    },
+    {
+      "name": "Ananya",
+      "text": "The modeling shoot exceeded all my expectations. Sairam has an incredible eye for light and composition.",
+      "event": "Modeling"
+    },
+    {
+      "name": "Vikram & Meera",
+      "text": "Our pre-wedding shoot was magical. They made us feel so comfortable and the results were absolutely stunning.",
+      "event": "Pre-wedding"
+    }
+  ],
+  "contact": {
+    "email": "50mmphotographyclicks@gmail.com",
+    "phone": "+91 9980400473",
+    "instagram": "https://www.instagram.com/50mm_.photography?igsh=MXVmdW91M3N6dmJxcQ==",
+    "instagramHandle": "@50mm_.photography"
+  }
+}

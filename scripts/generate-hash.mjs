@@ -1,0 +1,6 @@
+import bcrypt from "bcryptjs"
+
+const password = "50mmadmin"
+const hash = bcrypt.hashSync(password, 10)
+console.log("Password:", password)
+console.log("Hash:", hash)
