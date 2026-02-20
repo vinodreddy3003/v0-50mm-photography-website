@@ -7,6 +7,7 @@ import { SuccessModal } from "@/components/success-modal";
 import portfolioData from "@/data/portfolio.json";
 import { Mail, Phone, Instagram, Send, MapPin } from "lucide-react";
 import { motion } from "framer-motion";
+import emailjs from "@emailjs/browser";
 
 const { contact } = portfolioData;
 
@@ -24,6 +25,7 @@ export default function ContactPage() {
     name: "",
     email: "",
     event: "",
+    phone: "",
     customEvent: "",
     message: "",
   });
@@ -44,41 +46,38 @@ export default function ContactPage() {
         ? formState.customEvent
         : formState.event;
 
-      const formData = new FormData();
-      formData.append(
-        "access_key",
-        process.env.NEXT_PUBLIC_W3FORMS_KEY ||
-          "4d345798-01bc-42b6-94de-be64aa237e30",
+      const templateParams = {
+        name: formState.name,
+        email: formState.email,
+        event: selectedEvent,
+        message: formState.message,
+        phone: formState.phone,
+        subject: `Inquiry from ${formState.name}`,
+      };
+
+      const result = await emailjs.send(
+        "service_myyfpuc", // e.g. service_xxxxx
+        "template_ot6yutg", // e.g. template_yyyyy
+        templateParams,
+        "PQkBJApo6IThHnyPf", // e.g. AbC123XYZ
       );
-      formData.append("name", formState.name);
-      formData.append("email", formState.email);
-      formData.append("event", selectedEvent);
-      formData.append("message", formState.message);
-      formData.append("subject", `Inquiry from ${formState.name}`);
 
-      const response = await fetch("https://api.w3forms.com/submit", {
-        method: "POST",
-        body: formData,
-      });
-
-      const result = await response.json();
-
-      if (result.success) {
+      if (result.status === 200) {
         setSubmittedName(formState.name);
         setShowSuccessModal(true);
         setFormState({
           name: "",
           email: "",
           event: "",
+          phone: "",
           customEvent: "",
           message: "",
         });
         setIsCustomEvent(false);
-      } else {
-        alert("Something went wrong. Please try again.");
       }
-    } catch (err) {
-      alert("Network error. Please try again.");
+    } catch (error) {
+      console.error("EmailJS error:", error);
+      alert("Something went wrong. Please try again.");
     } finally {
       setIsSubmitting(false);
     }
@@ -203,7 +202,7 @@ export default function ContactPage() {
                       }))
                     }
                     className="bg-transparent border-b border-border px-0 py-3 text-foreground placeholder:text-muted-foreground/50 focus:outline-none transition-colors"
-                    placeholder="John Doe"
+                    placeholder="vinod reddy"
                   />
                 </div>
 
@@ -227,7 +226,30 @@ export default function ContactPage() {
                       }))
                     }
                     className="bg-transparent border-b border-border px-0 py-3 text-foreground placeholder:text-muted-foreground/50 focus:outline-none transition-colors"
-                    placeholder="john@example.com"
+                    placeholder="vinod@example.com"
+                  />
+                </div>
+                 <div className="flex flex-col gap-2">
+                  <label
+                    htmlFor="tel"
+                    className="text-xs tracking-widest uppercase text-muted-foreground"
+                  >
+                    Phone Number
+                  </label>
+                  <motion.input
+                    whileFocus={{ borderColor: "oklch(0.82 0.06 80)" }}
+                    id="tel"
+                    type="tel"
+                    required
+                    value={formState.phone}
+                    onChange={(e) =>
+                      setFormState((prev) => ({
+                        ...prev,
+                        phone: e.target.value,
+                      }))
+                    }
+                    className="bg-transparent border-b border-border px-0 py-3 text-foreground placeholder:text-muted-foreground/50 focus:outline-none transition-colors"
+                    placeholder="+91 9876543210"
                   />
                 </div>
 
