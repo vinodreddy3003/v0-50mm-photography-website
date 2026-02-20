@@ -3,6 +3,7 @@
 import { useState } from "react"
 import { SiteWrapper } from "@/components/site-wrapper"
 import { AnimatedSection } from "@/components/animated-section"
+import { SuccessModal } from "@/components/success-modal"
 import portfolioData from "@/data/portfolio.json"
 import { Mail, Phone, Instagram, Send, MapPin } from "lucide-react"
 import { motion } from "framer-motion"
@@ -26,7 +27,7 @@ export default function ContactPage() {
     customEvent: "",
     message: ""
   })
-  const [submitted, setSubmitted] = useState(false)
+  const [showSuccessModal, setShowSuccessModal] = useState(false)
   const [isCustomEvent, setIsCustomEvent] = useState(false)
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -40,17 +41,23 @@ export default function ContactPage() {
     )
     window.open(`mailto:50mmphotographyclicks@gmail.com?subject=${subject}&body=${body}`, "_self")
     
-    setSubmitted(true)
+    // Show success modal
+    setShowSuccessModal(true)
+    
+    // Clear form after showing modal
     setTimeout(() => {
-      setSubmitted(false)
       setFormState({ name: "", email: "", event: "", customEvent: "", message: "" })
       setIsCustomEvent(false)
-    }, 3000)
+    }, 500)
+  }
+
+  const handleCloseModal = () => {
+    setShowSuccessModal(false)
   }
 
   return (
-    <SiteWrapper showLoading>
-      <section className="pt-32 pb-24 px-6 md:px-12">
+    <SiteWrapper>
+      <section className="pt-32 pb-12 px-6 md:px-12">
         <div className="max-w-[1400px] mx-auto">
           <AnimatedSection className="text-center mb-16">
             <p className="text-sm tracking-[0.4em] uppercase text-primary mb-4">Get in Touch</p>
@@ -237,7 +244,7 @@ export default function ContactPage() {
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                 >
-                  {submitted ? "Message Sent" : "Send Message"}
+                  Send Message
                   <Send className="w-4 h-4" />
                 </motion.button>
               </form>
@@ -246,13 +253,45 @@ export default function ContactPage() {
         </div>
       </section>
 
-      {/* Map placeholder */}
-      <section className="h-80 bg-muted/30 flex items-center justify-center border-t border-border/50">
-        <div className="text-center">
-          <MapPin className="w-8 h-8 text-primary mx-auto mb-2" />
-          <p className="text-muted-foreground text-sm">Bangalore, Karnataka, India</p>
+      {/* Interactive Map Section */}
+      <section className="border-t border-border/50">
+        <div className="px-6 md:px-12 py-12">
+          <div className="max-w-[1400px] mx-auto">
+            <AnimatedSection className="mb-8">
+              <div className="flex items-center gap-3 mb-4">
+                <MapPin className="w-6 h-6 text-primary" />
+                <h2 className="text-2xl md:text-3xl font-serif text-foreground">Visit Us</h2>
+              </div>
+              <p className="text-muted-foreground max-w-2xl">
+                Located in Bangalore, we're ready to capture your most precious moments. Drop by our studio or reach out for consultations.
+              </p>
+            </AnimatedSection>
+          </div>
+        </div>
+
+        {/* Map Container */}
+        <div className="px-6 md:px-12 pb-12">
+          <div className="max-w-[1400px] mx-auto overflow-hidden rounded-lg border border-border/30">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3887.3897851232503!2d77.59366!3d13.08529!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae1781c0000001%3A0xf00ef62049231e0!2sBangalore%2C%20Karnataka%2C%20India!5e0!3m2!1sen!2sin!4v1234567890"
+              width="100%"
+              height="500"
+              style={{ border: 0 }}
+              allowFullScreen=""
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              className="w-full"
+            />
+          </div>
         </div>
       </section>
+
+      {/* Success Modal */}
+      <SuccessModal
+        isOpen={showSuccessModal}
+        onClose={handleCloseModal}
+        name={formState.name}
+      />
     </SiteWrapper>
   )
 }

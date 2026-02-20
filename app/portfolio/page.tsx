@@ -58,7 +58,7 @@ export default function PortfolioPage() {
   }
 
   return (
-    <SiteWrapper showLoading>
+    <SiteWrapper>
       <section className="pt-32 pb-12 px-6 md:px-12">
         <div className="max-w-[1400px] mx-auto">
           <AnimatedSection className="text-center">
