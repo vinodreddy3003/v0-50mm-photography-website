@@ -1,0 +1,66 @@
+{
+  "category": "Birthday",
+  "categoryId": "birthday",
+  "images": [
+    {
+      "id": "bday-1",
+      "src": "/images/birthday-1.jpg",
+      "alt": "Birthday celebration photography",
+      "title": "Celebration Moments"
+    },
+    {
+      "id": "bday-2",
+      "src": "/images/birthday-2.jpg",
+      "alt": "Birthday party candid shots",
+      "title": "Candid Joy"
+    },
+    {
+      "id": "bday-3",
+      "src": "/images/birthday-3.jpg",
+      "alt": "Birthday cake cutting ceremony",
+      "title": "Make a Wish"
+    },
+    {
+      "id": "bday-4",
+      "src": "/images/birthday-4.jpg",
+      "alt": "Birthday party group photo",
+      "title": "Together"
+    },
+    {
+      "id": "bday-5",
+      "src": "/images/birthday-5.jpg",
+      "alt": "Birthday decorations photography",
+      "title": "Party Perfect"
+    },
+    {
+      "id": "bday-6",
+      "src": "/images/birthday-6.jpg",
+      "alt": "Birthday milestone moment",
+      "title": "Milestone"
+    },
+    {
+      "id": "bday-7",
+      "src": "/images/birthday-7.jpg",
+      "alt": "Birthday celebration details",
+      "title": "Special Details"
+    },
+    {
+      "id": "bday-8",
+      "src": "/images/birthday-8.jpg",
+      "alt": "Birthday smiling faces",
+      "title": "Happy Faces"
+    },
+    {
+      "id": "bday-9",
+      "src": "/images/birthday-9.jpg",
+      "alt": "Birthday fun and laughter",
+      "title": "Fun Times"
+    },
+    {
+      "id": "bday-10",
+      "src": "/images/birthday-10.jpg",
+      "alt": "Birthday cherished memories",
+      "title": "Memories Forever"
+    }
+  ]
+}

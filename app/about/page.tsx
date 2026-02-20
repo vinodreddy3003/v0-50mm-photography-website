@@ -25,7 +25,7 @@ const values = [
 
 export default function AboutPage() {
   return (
-    <SiteWrapper>
+    <SiteWrapper showLoading>
       {/* Hero */}
       <section className="pt-32 pb-20 px-6 md:px-12">
         <div className="max-w-[1400px] mx-auto">

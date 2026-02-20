@@ -9,22 +9,47 @@ import { motion } from "framer-motion"
 
 const { contact } = portfolioData
 
+const PREDEFINED_EVENTS = [
+  "Wedding",
+  "Engagement",
+  "Pre-Wedding",
+  "Birthday",
+  "Modeling",
+  "Other"
+]
+
 export default function ContactPage() {
-  const [formState, setFormState] = useState({ name: "", email: "", message: "" })
+  const [formState, setFormState] = useState({
+    name: "",
+    email: "",
+    event: "",
+    customEvent: "",
+    message: ""
+  })
   const [submitted, setSubmitted] = useState(false)
+  const [isCustomEvent, setIsCustomEvent] = useState(false)
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    // Opens mailto with form data
+    const selectedEvent = isCustomEvent ? formState.customEvent : formState.event
+
+    // Send email using API
     const subject = encodeURIComponent(`Inquiry from ${formState.name}`)
-    const body = encodeURIComponent(`Name: ${formState.name}\nEmail: ${formState.email}\n\nMessage:\n${formState.message}`)
-    window.open(`mailto:${contact.email}?subject=${subject}&body=${body}`, "_self")
+    const body = encodeURIComponent(
+      `Name: ${formState.name}\nEmail: ${formState.email}\nEvent Type: ${selectedEvent}\n\nMessage:\n${formState.message}`
+    )
+    window.open(`mailto:50mmphotographyclicks@gmail.com?subject=${subject}&body=${body}`, "_self")
+    
     setSubmitted(true)
-    setTimeout(() => setSubmitted(false), 3000)
+    setTimeout(() => {
+      setSubmitted(false)
+      setFormState({ name: "", email: "", event: "", customEvent: "", message: "" })
+      setIsCustomEvent(false)
+    }, 3000)
   }
 
   return (
-    <SiteWrapper>
+    <SiteWrapper showLoading>
       <section className="pt-32 pb-24 px-6 md:px-12">
         <div className="max-w-[1400px] mx-auto">
           <AnimatedSection className="text-center mb-16">
@@ -135,6 +160,59 @@ export default function ContactPage() {
                     className="bg-transparent border-b border-border px-0 py-3 text-foreground placeholder:text-muted-foreground/50 focus:outline-none transition-colors"
                     placeholder="john@example.com"
                   />
+                </div>
+
+                <div className="flex flex-col gap-2">
+                  <label htmlFor="event" className="text-xs tracking-widest uppercase text-muted-foreground">
+                    Event Type
+                  </label>
+                  {!isCustomEvent ? (
+                    <div className="flex flex-col gap-3">
+                      <select
+                        id="event"
+                        value={formState.event}
+                        onChange={(e) => {
+                          if (e.target.value === "custom") {
+                            setIsCustomEvent(true)
+                            setFormState((prev) => ({ ...prev, event: "" }))
+                          } else {
+                            setFormState((prev) => ({ ...prev, event: e.target.value }))
+                          }
+                        }}
+                        className="bg-transparent border-b border-border px-0 py-3 text-foreground placeholder:text-muted-foreground/50 focus:outline-none transition-colors"
+                      >
+                        <option value="" className="bg-background text-foreground">Select an event type...</option>
+                        {PREDEFINED_EVENTS.map((event) => (
+                          <option key={event} value={event} className="bg-background text-foreground">
+                            {event}
+                          </option>
+                        ))}
+                        <option value="custom" className="bg-background text-foreground">Other (specify below)</option>
+                      </select>
+                    </div>
+                  ) : (
+                    <div className="flex flex-col gap-2">
+                      <motion.input
+                        whileFocus={{ borderColor: "oklch(0.82 0.06 80)" }}
+                        type="text"
+                        value={formState.customEvent}
+                        onChange={(e) => setFormState((prev) => ({ ...prev, customEvent: e.target.value }))}
+                        className="bg-transparent border-b border-border px-0 py-3 text-foreground placeholder:text-muted-foreground/50 focus:outline-none transition-colors"
+                        placeholder="Enter your event type..."
+                        required
+                      />
+                      <button
+                        type="button"
+                        onClick={() => {
+                          setIsCustomEvent(false)
+                          setFormState((prev) => ({ ...prev, customEvent: "" }))
+                        }}
+                        className="text-xs text-primary hover:text-primary/80 transition-colors mt-1"
+                      >
+                        Back to predefined options
+                      </button>
+                    </div>
+                  )}
                 </div>
 
                 <div className="flex flex-col gap-2">

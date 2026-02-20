@@ -1,0 +1,66 @@
+{
+  "category": "Engagement",
+  "categoryId": "engagement",
+  "images": [
+    {
+      "id": "eng-1",
+      "src": "/images/engagement-1.jpg",
+      "alt": "Engagement ring exchange moment",
+      "title": "Promise of Forever"
+    },
+    {
+      "id": "eng-2",
+      "src": "/images/engagement-2.jpg",
+      "alt": "Couple embracing during engagement shoot",
+      "title": "Together"
+    },
+    {
+      "id": "eng-3",
+      "src": "/images/engagement-3.jpg",
+      "alt": "Engagement portrait with sunset",
+      "title": "Golden Hour Love"
+    },
+    {
+      "id": "eng-4",
+      "src": "/images/engagement-4.jpg",
+      "alt": "Ring details and couple hands",
+      "title": "Small Details"
+    },
+    {
+      "id": "eng-5",
+      "src": "/images/engagement-5.jpg",
+      "alt": "Engagement couple in nature",
+      "title": "Nature's Canvas"
+    },
+    {
+      "id": "eng-6",
+      "src": "/images/engagement-6.jpg",
+      "alt": "Intimate engagement moment",
+      "title": "Intimate Moment"
+    },
+    {
+      "id": "eng-7",
+      "src": "/images/engagement-7.jpg",
+      "alt": "Engagement shoot in garden",
+      "title": "Garden Romance"
+    },
+    {
+      "id": "eng-8",
+      "src": "/images/engagement-8.jpg",
+      "alt": "Couple laughing during shoot",
+      "title": "Pure Joy"
+    },
+    {
+      "id": "eng-9",
+      "src": "/images/engagement-9.jpg",
+      "alt": "Engagement portrait photography",
+      "title": "Two Hearts"
+    },
+    {
+      "id": "eng-10",
+      "src": "/images/engagement-10.jpg",
+      "alt": "Engagement story conclusion",
+      "title": "Beginning"
+    }
+  ]
+}

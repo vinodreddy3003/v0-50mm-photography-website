@@ -1,45 +1,56 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { SiteWrapper } from "@/components/site-wrapper"
 import { AnimatedSection } from "@/components/animated-section"
 import { ImageReveal } from "@/components/image-reveal"
 import { Lightbox } from "@/components/lightbox"
 import useSWR from "swr"
-import portfolioData from "@/data/portfolio.json"
 import { motion, AnimatePresence } from "framer-motion"
 
 const fetcher = (url: string) => fetch(url).then((r) => r.json())
 
 interface PortfolioImage {
+  id: string
   src: string
   alt: string
   title?: string
-  category?: string
 }
 
+const PORTFOLIO_CATEGORIES = [
+  { id: "engagement", name: "Engagement" },
+  { id: "wedding", name: "Wedding" },
+  { id: "prewedding", name: "Pre-Wedding" },
+  { id: "modeling", name: "Modeling" },
+  { id: "birthday", name: "Birthday" },
+  { id: "other", name: "Other" },
+]
+
 export default function PortfolioPage() {
-  const { data } = useSWR<{ images: PortfolioImage[] }>("/api/images", fetcher, {
-    refreshInterval: 30000,
-  })
-  const [activeCategory, setActiveCategory] = useState("all")
+  const [selectedCategory, setSelectedCategory] = useState("engagement")
   const [lightboxOpen, setLightboxOpen] = useState(false)
   const [lightboxIndex, setLightboxIndex] = useState(0)
+  const [images, setImages] = useState<PortfolioImage[]>([])
+  const [isLoading, setIsLoading] = useState(true)
 
-  const categories = [{ id: "all", name: "All" }, ...portfolioData.categories]
+  useEffect(() => {
+    const loadCategoryImages = async () => {
+      setIsLoading(true)
+      try {
+        const data = await import(`@/data/portfolio-${selectedCategory}.json`)
+        setImages(data.default.images)
+      } catch (error) {
+        console.error("Failed to load portfolio category:", error)
+        setImages([])
+      } finally {
+        setIsLoading(false)
+      }
+    }
 
-  const defaultImages: PortfolioImage[] = portfolioData.defaultImages.map((img) => ({
-    src: img.src,
-    alt: img.alt,
-    title: img.title,
-    category: img.category,
-  }))
+    loadCategoryImages()
+  }, [selectedCategory])
 
-  const allImages = data?.images?.length ? data.images : defaultImages
-  const filteredImages =
-    activeCategory === "all"
-      ? allImages
-      : allImages.filter((img) => img.category === activeCategory)
+  const currentCategory = PORTFOLIO_CATEGORIES.find((cat) => cat.id === selectedCategory)
 
   const openLightbox = (index: number) => {
     setLightboxIndex(index)
@@ -47,7 +58,7 @@ export default function PortfolioPage() {
   }
 
   return (
-    <SiteWrapper>
+    <SiteWrapper showLoading>
       <section className="pt-32 pb-12 px-6 md:px-12">
         <div className="max-w-[1400px] mx-auto">
           <AnimatedSection className="text-center">
@@ -62,28 +73,21 @@ export default function PortfolioPage() {
         </div>
       </section>
 
-      {/* Filter tabs */}
+      {/* Category Navigation */}
       <section className="px-6 md:px-12 mb-12">
         <div className="max-w-[1400px] mx-auto">
-          <div className="flex flex-wrap justify-center gap-3">
-            {categories.map((cat) => (
+          <div className="flex flex-wrap justify-center gap-4">
+            {PORTFOLIO_CATEGORIES.map((cat) => (
               <button
                 key={cat.id}
-                onClick={() => setActiveCategory(cat.id)}
-                className={`relative px-5 py-2 text-xs tracking-widest uppercase transition-colors ${
-                  activeCategory === cat.id
-                    ? "text-primary-foreground"
+                onClick={() => setSelectedCategory(cat.id)}
+                className={`text-sm tracking-widest uppercase transition-colors ${
+                  selectedCategory === cat.id
+                    ? "text-primary font-semibold"
                     : "text-muted-foreground hover:text-foreground"
                 }`}
               >
-                {activeCategory === cat.id && (
-                  <motion.div
-                    layoutId="active-tab"
-                    className="absolute inset-0 bg-primary"
-                    transition={{ duration: 0.3, type: "spring", stiffness: 300, damping: 30 }}
-                  />
-                )}
-                <span className="relative z-10">{cat.name}</span>
+                {cat.name}
               </button>
             ))}
           </div>
@@ -94,39 +98,39 @@ export default function PortfolioPage() {
       <section className="px-6 md:px-12 pb-24">
         <div className="max-w-[1400px] mx-auto">
           <AnimatePresence mode="wait">
-            <motion.div
-              key={activeCategory}
-              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              transition={{ duration: 0.3 }}
-            >
-              {filteredImages.map((img, i) => (
-                <div key={img.src + i} className="group relative aspect-[4/5] overflow-hidden bg-muted">
-                  <ImageReveal
-                    src={img.src}
-                    alt={img.alt}
-                    fill
-                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                    onClick={() => openLightbox(i)}
-                  />
-                  <div className="absolute inset-0 bg-background/0 group-hover:bg-background/40 transition-all duration-500 flex items-end pointer-events-none">
-                    <div className="p-6 translate-y-full group-hover:translate-y-0 transition-transform duration-500">
-                      <p className="font-serif text-lg text-foreground">{img.title}</p>
-                      {img.category && (
+            {!isLoading && (
+              <motion.div
+                key={selectedCategory}
+                className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
+                transition={{ duration: 0.3 }}
+              >
+                {images.map((img, i) => (
+                  <div key={img.id} className="group relative aspect-[4/5] overflow-hidden bg-muted">
+                    <ImageReveal
+                      src={img.src}
+                      alt={img.alt}
+                      fill
+                      sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                      onClick={() => openLightbox(i)}
+                    />
+                    <div className="absolute inset-0 bg-background/0 group-hover:bg-background/40 transition-all duration-500 flex items-end pointer-events-none">
+                      <div className="p-6 translate-y-full group-hover:translate-y-0 transition-transform duration-500">
+                        <p className="font-serif text-lg text-foreground">{img.title}</p>
                         <p className="text-xs tracking-widest uppercase text-primary mt-1">
-                          {img.category}
+                          {currentCategory?.name}
                         </p>
-                      )}
+                      </div>
                     </div>
                   </div>
-                </div>
-              ))}
-            </motion.div>
+                ))}
+              </motion.div>
+            )}
           </AnimatePresence>
 
-          {filteredImages.length === 0 && (
+          {!isLoading && images.length === 0 && (
             <div className="text-center py-20">
               <p className="text-muted-foreground font-serif text-xl">
                 No images in this category yet
@@ -137,15 +141,15 @@ export default function PortfolioPage() {
       </section>
 
       <Lightbox
-        images={filteredImages}
+        images={images}
         currentIndex={lightboxIndex}
         isOpen={lightboxOpen}
         onClose={() => setLightboxOpen(false)}
         onPrev={() =>
-          setLightboxIndex((prev) => (prev - 1 + filteredImages.length) % filteredImages.length)
+          setLightboxIndex((prev) => (prev - 1 + images.length) % images.length)
         }
         onNext={() =>
-          setLightboxIndex((prev) => (prev + 1) % filteredImages.length)
+          setLightboxIndex((prev) => (prev + 1) % images.length)
         }
       />
     </SiteWrapper>

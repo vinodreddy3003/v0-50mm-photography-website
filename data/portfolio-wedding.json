@@ -1,0 +1,66 @@
+{
+  "category": "Wedding",
+  "categoryId": "wedding",
+  "images": [
+    {
+      "id": "wed-1",
+      "src": "/images/wedding-1.jpg",
+      "alt": "Wedding ceremony with golden light",
+      "title": "Golden Vows"
+    },
+    {
+      "id": "wed-2",
+      "src": "/images/wedding-2.jpg",
+      "alt": "Bride and groom first dance",
+      "title": "First Dance"
+    },
+    {
+      "id": "wed-3",
+      "src": "/images/wedding-3.jpg",
+      "alt": "Wedding ceremony exchange",
+      "title": "I Do"
+    },
+    {
+      "id": "wed-4",
+      "src": "/images/wedding-4.jpg",
+      "alt": "Wedding decoration and details",
+      "title": "Details Matter"
+    },
+    {
+      "id": "wed-5",
+      "src": "/images/wedding-5.jpg",
+      "alt": "Bride's portrait wedding",
+      "title": "Radiant"
+    },
+    {
+      "id": "wed-6",
+      "src": "/images/wedding-6.jpg",
+      "alt": "Wedding ceremony procession",
+      "title": "Walking Together"
+    },
+    {
+      "id": "wed-7",
+      "src": "/images/wedding-7.jpg",
+      "alt": "Wedding reception celebration",
+      "title": "Celebration"
+    },
+    {
+      "id": "wed-8",
+      "src": "/images/wedding-8.jpg",
+      "alt": "Bride and groom portrait",
+      "title": "Forever"
+    },
+    {
+      "id": "wed-9",
+      "src": "/images/wedding-9.jpg",
+      "alt": "Wedding ceremony moments",
+      "title": "Sacred Moment"
+    },
+    {
+      "id": "wed-10",
+      "src": "/images/wedding-10.jpg",
+      "alt": "Wedding sunset portrait",
+      "title": "New Chapter"
+    }
+  ]
+}

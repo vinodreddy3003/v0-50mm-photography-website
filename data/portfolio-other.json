@@ -1,0 +1,66 @@
+{
+  "category": "Other",
+  "categoryId": "other",
+  "images": [
+    {
+      "id": "other-1",
+      "src": "/images/other-1.jpg",
+      "alt": "Creative photography project",
+      "title": "Creative Vision"
+    },
+    {
+      "id": "other-2",
+      "src": "/images/other-2.jpg",
+      "alt": "Special occasion photography",
+      "title": "Special Occasion"
+    },
+    {
+      "id": "other-3",
+      "src": "/images/other-3.jpg",
+      "alt": "Product photography",
+      "title": "Product Showcase"
+    },
+    {
+      "id": "other-4",
+      "src": "/images/other-4.jpg",
+      "alt": "Event photography coverage",
+      "title": "Event Coverage"
+    },
+    {
+      "id": "other-5",
+      "src": "/images/other-5.jpg",
+      "alt": "Corporate photography",
+      "title": "Professional"
+    },
+    {
+      "id": "other-6",
+      "src": "/images/other-6.jpg",
+      "alt": "Nature and landscape shot",
+      "title": "Natural Wonders"
+    },
+    {
+      "id": "other-7",
+      "src": "/images/other-7.jpg",
+      "alt": "Artistic photography",
+      "title": "Artistic Expression"
+    },
+    {
+      "id": "other-8",
+      "src": "/images/other-8.jpg",
+      "alt": "Street photography",
+      "title": "Street Stories"
+    },
+    {
+      "id": "other-9",
+      "src": "/images/other-9.jpg",
+      "alt": "Documentary photography",
+      "title": "Documentary"
+    },
+    {
+      "id": "other-10",
+      "src": "/images/other-10.jpg",
+      "alt": "Creative portfolio piece",
+      "title": "Creative Collection"
+    }
+  ]
+}

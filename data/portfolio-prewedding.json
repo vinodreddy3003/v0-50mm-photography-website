@@ -1,0 +1,66 @@
+{
+  "category": "Pre-Wedding",
+  "categoryId": "prewedding",
+  "images": [
+    {
+      "id": "pre-1",
+      "src": "/images/prewedding-1.jpg",
+      "alt": "Pre-wedding couple in garden",
+      "title": "Garden Romance"
+    },
+    {
+      "id": "pre-2",
+      "src": "/images/prewedding-2.jpg",
+      "alt": "Pre-wedding shoot in nature",
+      "title": "Natural Beauty"
+    },
+    {
+      "id": "pre-3",
+      "src": "/images/prewedding-3.jpg",
+      "alt": "Pre-wedding couple walking",
+      "title": "Hand in Hand"
+    },
+    {
+      "id": "pre-4",
+      "src": "/images/prewedding-4.jpg",
+      "alt": "Pre-wedding sunset moment",
+      "title": "Golden Sunset"
+    },
+    {
+      "id": "pre-5",
+      "src": "/images/prewedding-5.jpg",
+      "alt": "Pre-wedding romantic pose",
+      "title": "Romantic Embrace"
+    },
+    {
+      "id": "pre-6",
+      "src": "/images/prewedding-6.jpg",
+      "alt": "Pre-wedding traditional outfit",
+      "title": "Traditional Grace"
+    },
+    {
+      "id": "pre-7",
+      "src": "/images/prewedding-7.jpg",
+      "alt": "Pre-wedding urban shoot",
+      "title": "City Love"
+    },
+    {
+      "id": "pre-8",
+      "src": "/images/prewedding-8.jpg",
+      "alt": "Pre-wedding couple laughing",
+      "title": "Joy and Laughter"
+    },
+    {
+      "id": "pre-9",
+      "src": "/images/prewedding-9.jpg",
+      "alt": "Pre-wedding intimate moment",
+      "title": "Close Connection"
+    },
+    {
+      "id": "pre-10",
+      "src": "/images/prewedding-10.jpg",
+      "alt": "Pre-wedding journey begins",
+      "title": "Journey Ahead"
+    }
+  ]
+}
