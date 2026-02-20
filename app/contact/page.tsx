@@ -273,7 +273,7 @@ export default function ContactPage() {
         <div className="px-6 md:px-12 pb-12">
           <div className="max-w-[1400px] mx-auto overflow-hidden rounded-lg border border-border/30">
             <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3887.3897851232503!2d77.59366!3d13.08529!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae1781c0000001%3A0xf00ef62049231e0!2sBangalore%2C%20Karnataka%2C%20India!5e0!3m2!1sen!2sin!4v1234567890"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3887.562154!2d77.571428!3d13.087!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae1781c0000001%3A0xf00ef62049231e0!2s50mm%20Photography%20Studio!5e0!3m2!1sen!2sin!4v1707936000000"
               width="100%"
               height="500"
               style={{ border: 0 }}

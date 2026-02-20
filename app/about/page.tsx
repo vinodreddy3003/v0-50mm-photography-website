@@ -110,6 +110,66 @@ export default function AboutPage() {
               </AnimatedSection>
             ))}
           </div>
+
+          {/* Extended Team Images */}
+          <div className="mt-20 pt-20 border-t border-border/30">
+            <AnimatedSection className="text-center mb-16">
+              <h3 className="text-3xl font-serif text-foreground">Our Creators</h3>
+              <p className="text-muted-foreground mt-2">The visionaries behind 50mm</p>
+            </AnimatedSection>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-4xl mx-auto">
+              {/* Sairam - Camera */}
+              <AnimatedSection delay={0.1}>
+                <div className="flex flex-col items-center text-center gap-6">
+                  <div className="relative w-72 h-80 overflow-hidden rounded-lg group cursor-pointer">
+                    <Image
+                      src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/IMG_0462.jpg-oLMngd2wVPqI1rXGH7D1VXfuqW89Fr.jpeg"
+                      alt="Sairam - Photographer"
+                      fill
+                      sizes="288px"
+                      className="object-cover object-center grayscale group-hover:grayscale-0 transition-all duration-500"
+                    />
+                    <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-all duration-500" />
+                  </div>
+                  <div>
+                    <h4 className="font-serif text-2xl text-foreground">Sairam</h4>
+                    <p className="text-sm tracking-widest uppercase text-primary mt-2">
+                      Lead Photographer & Founder
+                    </p>
+                    <p className="text-xs text-muted-foreground mt-3 max-w-xs mx-auto">
+                      The creative mind and technical expertise behind every frame
+                    </p>
+                  </div>
+                </div>
+              </AnimatedSection>
+
+              {/* Bhavani - Sitting */}
+              <AnimatedSection delay={0.2}>
+                <div className="flex flex-col items-center text-center gap-6">
+                  <div className="relative w-72 h-80 overflow-hidden rounded-lg group cursor-pointer">
+                    <Image
+                      src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/WhatsApp%20Image%202026-02-20%20at%2015.55.24-hCMV24X9iByNL3mAxHmI8M5z0eBxBk.jpeg"
+                      alt="Bhavani - Creative Partner"
+                      fill
+                      sizes="288px"
+                      className="object-cover object-center grayscale group-hover:grayscale-0 transition-all duration-500"
+                    />
+                    <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-all duration-500" />
+                  </div>
+                  <div>
+                    <h4 className="font-serif text-2xl text-foreground">Bhavani</h4>
+                    <p className="text-sm tracking-widest uppercase text-primary mt-2">
+                      Creative Partner & Editor
+                    </p>
+                    <p className="text-xs text-muted-foreground mt-3 max-w-xs mx-auto">
+                      Bringing artistic vision and storytelling to every project
+                    </p>
+                  </div>
+                </div>
+              </AnimatedSection>
+            </div>
+          </div>
         </div>
       </section>
 
