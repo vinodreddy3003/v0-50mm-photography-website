@@ -4,63 +4,57 @@
   "images": [
     {
       "id": "mod-1",
-      "src": "/images/modeling-1.jpg",
+      "src": "/Model shoot/2.png",
       "alt": "Professional modeling portfolio shot",
       "title": "Editorial Edge"
     },
     {
       "id": "mod-2",
-      "src": "/images/cover-model.png",
+      "src": "/Model shoot/image1.png",
       "alt": "Fashion editorial cover shoot",
       "title": "Cover Story"
     },
     {
       "id": "mod-3",
-      "src": "/images/modeling-3.jpg",
+      "src": "/Model shoot/9.png",
       "alt": "Fashion portrait photography",
       "title": "Fashion Forward"
     },
     {
       "id": "mod-4",
-      "src": "/images/modeling-4.jpg",
+      "src": "/Model shoot/88d4a9023e4a8ba811439943bbb74dba (2).jpg",
       "alt": "Professional headshot",
       "title": "Confident"
     },
     {
       "id": "mod-5",
-      "src": "/images/modeling-5.jpg",
+      "src": "/Model shoot/88d4a9023e4a8ba811439943bbb74dba (2).jpg",
       "alt": "Editorial makeup and styling",
       "title": "Beauty and Style"
     },
     {
       "id": "mod-6",
-      "src": "/images/modeling-6.jpg",
+      "src": "/Model shoot/5e609beef5e19d5389229457e444353a (1).jpg",
       "alt": "Fashion campaign shoot",
       "title": "Campaign"
     },
     {
       "id": "mod-7",
-      "src": "/images/modeling-7.jpg",
+      "src": "/Model shoot/30364569.jpg",
       "alt": "Professional portfolio image",
       "title": "Portfolio Pride"
     },
     {
       "id": "mod-8",
-      "src": "/images/modeling-8.jpg",
+      "src": "/Model shoot/30364570.jpg",
       "alt": "Fashion editorial lighting",
       "title": "Artistic Vision"
     },
     {
       "id": "mod-9",
-      "src": "/images/modeling-9.jpg",
+      "src": "/Model shoot/30364572.jpg",
       "alt": "Professional model portfolio",
       "title": "Star Power"
-    },
-    {
-      "id": "mod-10",
-      "src": "/images/modeling-10.jpg",
-      "alt": "Fashion photography elegance",
-      "title": "Elegance"
     }
   ]
 }

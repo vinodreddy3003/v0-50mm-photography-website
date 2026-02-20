@@ -1,14 +1,14 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import { SiteWrapper } from "@/components/site-wrapper"
-import { AnimatedSection } from "@/components/animated-section"
-import { SuccessModal } from "@/components/success-modal"
-import portfolioData from "@/data/portfolio.json"
-import { Mail, Phone, Instagram, Send, MapPin } from "lucide-react"
-import { motion } from "framer-motion"
+import { useState } from "react";
+import { SiteWrapper } from "@/components/site-wrapper";
+import { AnimatedSection } from "@/components/animated-section";
+import { SuccessModal } from "@/components/success-modal";
+import portfolioData from "@/data/portfolio.json";
+import { Mail, Phone, Instagram, Send, MapPin } from "lucide-react";
+import { motion } from "framer-motion";
 
-const { contact } = portfolioData
+const { contact } = portfolioData;
 
 const PREDEFINED_EVENTS = [
   "Wedding",
@@ -16,8 +16,8 @@ const PREDEFINED_EVENTS = [
   "Pre-Wedding",
   "Birthday",
   "Modeling",
-  "Other"
-]
+  "Other",
+];
 
 export default function ContactPage() {
   const [formState, setFormState] = useState({
@@ -25,42 +25,77 @@ export default function ContactPage() {
     email: "",
     event: "",
     customEvent: "",
-    message: ""
-  })
-  const [showSuccessModal, setShowSuccessModal] = useState(false)
-  const [isCustomEvent, setIsCustomEvent] = useState(false)
+    message: "",
+  });
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
-    const selectedEvent = isCustomEvent ? formState.customEvent : formState.event
+  const [showSuccessModal, setShowSuccessModal] = useState(false);
+  const [isCustomEvent, setIsCustomEvent] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submittedName, setSubmittedName] = useState("");
 
-    // Send email using API
-    const subject = encodeURIComponent(`Inquiry from ${formState.name}`)
-    const body = encodeURIComponent(
-      `Name: ${formState.name}\nEmail: ${formState.email}\nEvent Type: ${selectedEvent}\n\nMessage:\n${formState.message}`
-    )
-    window.open(`mailto:50mmphotographyclicks@gmail.com?subject=${subject}&body=${body}`, "_self")
-    
-    // Show success modal
-    setShowSuccessModal(true)
-    
-    // Clear form after showing modal
-    setTimeout(() => {
-      setFormState({ name: "", email: "", event: "", customEvent: "", message: "" })
-      setIsCustomEvent(false)
-    }, 500)
-  }
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (isSubmitting) return;
+
+    setIsSubmitting(true);
+
+    try {
+      const selectedEvent = isCustomEvent
+        ? formState.customEvent
+        : formState.event;
+
+      const formData = new FormData();
+      formData.append(
+        "access_key",
+        process.env.NEXT_PUBLIC_W3FORMS_KEY ||
+          "4d345798-01bc-42b6-94de-be64aa237e30",
+      );
+      formData.append("name", formState.name);
+      formData.append("email", formState.email);
+      formData.append("event", selectedEvent);
+      formData.append("message", formState.message);
+      formData.append("subject", `Inquiry from ${formState.name}`);
+
+      const response = await fetch("https://api.w3forms.com/submit", {
+        method: "POST",
+        body: formData,
+      });
+
+      const result = await response.json();
+
+      if (result.success) {
+        setSubmittedName(formState.name);
+        setShowSuccessModal(true);
+        setFormState({
+          name: "",
+          email: "",
+          event: "",
+          customEvent: "",
+          message: "",
+        });
+        setIsCustomEvent(false);
+      } else {
+        alert("Something went wrong. Please try again.");
+      }
+    } catch (err) {
+      alert("Network error. Please try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   const handleCloseModal = () => {
-    setShowSuccessModal(false)
-  }
+    setShowSuccessModal(false);
+  };
 
   return (
     <SiteWrapper>
       <section className="pt-32 pb-12 px-6 md:px-12">
         <div className="max-w-[1400px] mx-auto">
           <AnimatedSection className="text-center mb-16">
-            <p className="text-sm tracking-[0.4em] uppercase text-primary mb-4">Get in Touch</p>
+            <p className="text-sm tracking-[0.4em] uppercase text-primary mb-4">
+              Get in Touch
+            </p>
             <h1 className="text-5xl md:text-7xl font-serif text-foreground text-balance">
               Contact Us
             </h1>
@@ -73,10 +108,13 @@ export default function ContactPage() {
             {/* Contact info */}
             <AnimatedSection>
               <div className="flex flex-col gap-8">
-                <h2 className="font-serif text-2xl text-foreground">{"Let's Connect"}</h2>
+                <h2 className="font-serif text-2xl text-foreground">
+                  {"Let's Connect"}
+                </h2>
                 <p className="text-muted-foreground leading-relaxed text-pretty">
-                  Whether you are planning your dream wedding, an intimate engagement shoot, or
-                  a creative portfolio session, we would love to hear from you.
+                  Whether you are planning your dream wedding, an intimate
+                  engagement shoot, or a creative portfolio session, we would
+                  love to hear from you.
                 </p>
 
                 <div className="flex flex-col gap-6 mt-4">
@@ -88,7 +126,9 @@ export default function ContactPage() {
                       <Mail className="w-5 h-5" />
                     </div>
                     <div>
-                      <p className="text-xs tracking-widest uppercase text-muted-foreground mb-1">Email</p>
+                      <p className="text-xs tracking-widest uppercase text-muted-foreground mb-1">
+                        Email
+                      </p>
                       <p className="text-sm">{contact.email}</p>
                     </div>
                   </a>
@@ -101,7 +141,9 @@ export default function ContactPage() {
                       <Phone className="w-5 h-5" />
                     </div>
                     <div>
-                      <p className="text-xs tracking-widest uppercase text-muted-foreground mb-1">Phone</p>
+                      <p className="text-xs tracking-widest uppercase text-muted-foreground mb-1">
+                        Phone
+                      </p>
                       <p className="text-sm">{contact.phone}</p>
                     </div>
                   </a>
@@ -116,7 +158,9 @@ export default function ContactPage() {
                       <Instagram className="w-5 h-5" />
                     </div>
                     <div>
-                      <p className="text-xs tracking-widest uppercase text-muted-foreground mb-1">Instagram</p>
+                      <p className="text-xs tracking-widest uppercase text-muted-foreground mb-1">
+                        Instagram
+                      </p>
                       <p className="text-sm">{contact.instagramHandle}</p>
                     </div>
                   </a>
@@ -126,7 +170,9 @@ export default function ContactPage() {
                       <MapPin className="w-5 h-5" />
                     </div>
                     <div>
-                      <p className="text-xs tracking-widest uppercase text-muted-foreground mb-1">Location</p>
+                      <p className="text-xs tracking-widest uppercase text-muted-foreground mb-1">
+                        Location
+                      </p>
                       <p className="text-sm">Bangalore, India</p>
                     </div>
                   </div>
@@ -138,7 +184,10 @@ export default function ContactPage() {
             <AnimatedSection delay={0.2}>
               <form onSubmit={handleSubmit} className="flex flex-col gap-6">
                 <div className="flex flex-col gap-2">
-                  <label htmlFor="name" className="text-xs tracking-widest uppercase text-muted-foreground">
+                  <label
+                    htmlFor="name"
+                    className="text-xs tracking-widest uppercase text-muted-foreground"
+                  >
                     Your Name
                   </label>
                   <motion.input
@@ -147,14 +196,22 @@ export default function ContactPage() {
                     type="text"
                     required
                     value={formState.name}
-                    onChange={(e) => setFormState((prev) => ({ ...prev, name: e.target.value }))}
+                    onChange={(e) =>
+                      setFormState((prev) => ({
+                        ...prev,
+                        name: e.target.value,
+                      }))
+                    }
                     className="bg-transparent border-b border-border px-0 py-3 text-foreground placeholder:text-muted-foreground/50 focus:outline-none transition-colors"
                     placeholder="John Doe"
                   />
                 </div>
 
                 <div className="flex flex-col gap-2">
-                  <label htmlFor="email" className="text-xs tracking-widest uppercase text-muted-foreground">
+                  <label
+                    htmlFor="email"
+                    className="text-xs tracking-widest uppercase text-muted-foreground"
+                  >
                     Email Address
                   </label>
                   <motion.input
@@ -163,38 +220,64 @@ export default function ContactPage() {
                     type="email"
                     required
                     value={formState.email}
-                    onChange={(e) => setFormState((prev) => ({ ...prev, email: e.target.value }))}
+                    onChange={(e) =>
+                      setFormState((prev) => ({
+                        ...prev,
+                        email: e.target.value,
+                      }))
+                    }
                     className="bg-transparent border-b border-border px-0 py-3 text-foreground placeholder:text-muted-foreground/50 focus:outline-none transition-colors"
                     placeholder="john@example.com"
                   />
                 </div>
 
                 <div className="flex flex-col gap-2">
-                  <label htmlFor="event" className="text-xs tracking-widest uppercase text-muted-foreground">
+                  <label
+                    htmlFor="event"
+                    className="text-xs tracking-widest uppercase text-muted-foreground"
+                  >
                     Event Type
                   </label>
                   {!isCustomEvent ? (
                     <div className="flex flex-col gap-3">
                       <select
                         id="event"
+                        required
                         value={formState.event}
                         onChange={(e) => {
                           if (e.target.value === "custom") {
-                            setIsCustomEvent(true)
-                            setFormState((prev) => ({ ...prev, event: "" }))
+                            setIsCustomEvent(true);
+                            setFormState((prev) => ({ ...prev, event: "" }));
                           } else {
-                            setFormState((prev) => ({ ...prev, event: e.target.value }))
+                            setFormState((prev) => ({
+                              ...prev,
+                              event: e.target.value,
+                            }));
                           }
                         }}
                         className="bg-transparent border-b border-border px-0 py-3 text-foreground placeholder:text-muted-foreground/50 focus:outline-none transition-colors"
                       >
-                        <option value="" className="bg-background text-foreground">Select an event type...</option>
+                        <option
+                          value=""
+                          className="bg-background text-foreground"
+                        >
+                          Select an event type...
+                        </option>
                         {PREDEFINED_EVENTS.map((event) => (
-                          <option key={event} value={event} className="bg-background text-foreground">
+                          <option
+                            key={event}
+                            value={event}
+                            className="bg-background text-foreground"
+                          >
                             {event}
                           </option>
                         ))}
-                        <option value="custom" className="bg-background text-foreground">Other (specify below)</option>
+                        <option
+                          value="custom"
+                          className="bg-background text-foreground"
+                        >
+                          Other (specify below)
+                        </option>
                       </select>
                     </div>
                   ) : (
@@ -203,7 +286,12 @@ export default function ContactPage() {
                         whileFocus={{ borderColor: "oklch(0.82 0.06 80)" }}
                         type="text"
                         value={formState.customEvent}
-                        onChange={(e) => setFormState((prev) => ({ ...prev, customEvent: e.target.value }))}
+                        onChange={(e) =>
+                          setFormState((prev) => ({
+                            ...prev,
+                            customEvent: e.target.value,
+                          }))
+                        }
                         className="bg-transparent border-b border-border px-0 py-3 text-foreground placeholder:text-muted-foreground/50 focus:outline-none transition-colors"
                         placeholder="Enter your event type..."
                         required
@@ -211,8 +299,11 @@ export default function ContactPage() {
                       <button
                         type="button"
                         onClick={() => {
-                          setIsCustomEvent(false)
-                          setFormState((prev) => ({ ...prev, customEvent: "" }))
+                          setIsCustomEvent(false);
+                          setFormState((prev) => ({
+                            ...prev,
+                            customEvent: "",
+                          }));
                         }}
                         className="text-xs text-primary hover:text-primary/80 transition-colors mt-1"
                       >
@@ -223,7 +314,10 @@ export default function ContactPage() {
                 </div>
 
                 <div className="flex flex-col gap-2">
-                  <label htmlFor="message" className="text-xs tracking-widest uppercase text-muted-foreground">
+                  <label
+                    htmlFor="message"
+                    className="text-xs tracking-widest uppercase text-muted-foreground"
+                  >
                     Your Message
                   </label>
                   <motion.textarea
@@ -232,7 +326,12 @@ export default function ContactPage() {
                     required
                     rows={5}
                     value={formState.message}
-                    onChange={(e) => setFormState((prev) => ({ ...prev, message: e.target.value }))}
+                    onChange={(e) =>
+                      setFormState((prev) => ({
+                        ...prev,
+                        message: e.target.value,
+                      }))
+                    }
                     className="bg-transparent border-b border-border px-0 py-3 text-foreground placeholder:text-muted-foreground/50 focus:outline-none transition-colors resize-none"
                     placeholder="Tell us about your project..."
                   />
@@ -240,11 +339,12 @@ export default function ContactPage() {
 
                 <motion.button
                   type="submit"
-                  className="flex items-center justify-center gap-3 px-8 py-4 bg-primary text-primary-foreground hover:bg-primary/90 transition-colors text-sm tracking-widest uppercase mt-4"
+                  disabled={isSubmitting}
+                  className="flex items-center justify-center gap-3 px-8 py-4 bg-primary text-primary-foreground hover:bg-primary/90 disabled:opacity-60 disabled:cursor-not-allowed transition-colors text-sm tracking-widest uppercase mt-4"
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                 >
-                  Send Message
+                  {isSubmitting ? "Sending..." : "Send Message"}
                   <Send className="w-4 h-4" />
                 </motion.button>
               </form>
@@ -260,16 +360,18 @@ export default function ContactPage() {
             <AnimatedSection className="mb-8">
               <div className="flex items-center gap-3 mb-4">
                 <MapPin className="w-6 h-6 text-primary" />
-                <h2 className="text-2xl md:text-3xl font-serif text-foreground">Visit Us</h2>
+                <h2 className="text-2xl md:text-3xl font-serif text-foreground">
+                  Visit Us
+                </h2>
               </div>
               <p className="text-muted-foreground max-w-2xl">
-                Located in Bangalore, we're ready to capture your most precious moments. Drop by our studio or reach out for consultations.
+                Located in Bangalore, we're ready to capture your most precious
+                moments. Drop by our studio or reach out for consultations.
               </p>
             </AnimatedSection>
           </div>
         </div>
 
-        {/* Map Container */}
         <div className="px-6 md:px-12 pb-12">
           <div className="max-w-[1400px] mx-auto overflow-hidden rounded-lg border border-border/30">
             <iframe
@@ -277,7 +379,7 @@ export default function ContactPage() {
               width="100%"
               height="500"
               style={{ border: 0 }}
-              allowFullScreen=""
+              allowFullScreen
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
               className="w-full"
@@ -286,12 +388,11 @@ export default function ContactPage() {
         </div>
       </section>
 
-      {/* Success Modal */}
       <SuccessModal
         isOpen={showSuccessModal}
         onClose={handleCloseModal}
-        name={formState.name}
+        name={submittedName}
       />
     </SiteWrapper>
-  )
+  );
 }

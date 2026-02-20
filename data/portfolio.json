@@ -34,45 +34,45 @@
   "defaultImages": [
     {
       "id": "1",
-      "src": "/images/wedding-1.jpg",
+      "src": "/wedding/wedding5.jpg",
       "alt": "Wedding ceremony with golden light",
       "category": "wedding",
       "title": "Golden Vows"
     },
     {
       "id": "2",
-      "src": "/images/engagement-1.jpg",
+      "src": "/engagement/image1.png",
       "alt": "Engagement ring exchange moment",
       "category": "engagement",
       "title": "Promise of Forever"
     },
     {
       "id": "3",
-      "src": "/images/prewedding-1.jpg",
+      "src": "/Pre wedding/image1.jpg",
       "alt": "Pre-wedding couple in garden",
       "category": "prewedding",
       "title": "Garden Romance"
     },
     {
       "id": "4",
-      "src": "/images/birthday-1.jpg",
+      "src": "/Birthday/image5.JPG",
       "alt": "Birthday celebration photography",
       "category": "birthday",
       "title": "Celebration Moments"
     },
     {
       "id": "5",
-      "src": "/images/modeling-1.jpg",
+      "src": "/Model shoot/image1.png",
       "alt": "Professional modeling portfolio shot",
       "category": "modeling",
-      "title": "Editorial Edge"
+      "title": "Cover Story"
     },
     {
       "id": "6",
-      "src": "/images/cover-model.png",
+      "src": "/Model shoot/image2.jpg",
       "alt": "Fashion editorial cover shoot",
       "category": "modeling",
-      "title": "Cover Story"
+      "title": "Editorial Edge"
     }
   ],
   "team": [
@@ -89,17 +89,17 @@
   ],
   "testimonials": [
     {
-      "name": "Priya & Rahul",
+      "name": "Rachita & Nikhil",
       "text": "50mm Photography captured our wedding day perfectly. Every emotion, every detail - it was like reliving the day through their photos.",
       "event": "Wedding"
     },
     {
-      "name": "Ananya",
+      "name": "Anjali",
       "text": "The modeling shoot exceeded all my expectations. Sairam has an incredible eye for light and composition.",
       "event": "Modeling"
     },
     {
-      "name": "Vikram & Meera",
+      "name": "Raghu & Harini",
       "text": "Our pre-wedding shoot was magical. They made us feel so comfortable and the results were absolutely stunning.",
       "event": "Pre-wedding"
     }

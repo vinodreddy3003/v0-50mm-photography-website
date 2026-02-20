@@ -44,10 +44,10 @@ export default function AboutPage() {
       </section>
 
       {/* Cover image */}
-      <section className="px-6 md:px-12">
+      {/* <section className="px-6 md:px-12">
         <div className="max-w-[1200px] mx-auto">
           <ImageReveal
-            src="/images/cover-model.png"
+            src="/22 (1).png"
             alt="50mm Photography editorial work"
             width={1200}
             height={800}
@@ -55,7 +55,7 @@ export default function AboutPage() {
             priority
           />
         </div>
-      </section>
+      </section> */}
 
       {/* Values */}
       <section className="py-24 md:py-32 px-6 md:px-12">
@@ -78,16 +78,16 @@ export default function AboutPage() {
       </section>
 
       {/* Team */}
-      <section className="py-24 md:py-32 px-6 md:px-12 bg-card/30">
-        <div className="max-w-[1400px] mx-auto">
-          <AnimatedSection className="text-center mb-16">
+      <section className="py-24 md:py-12 px-6 md:px-12 bg-card/30">
+        <div>
+          {/* <AnimatedSection className="text-center mb-16">
             <p className="text-sm tracking-[0.4em] uppercase text-primary mb-4">The Team</p>
             <h2 className="text-4xl md:text-5xl font-serif text-foreground">
               Meet the Creators
             </h2>
-          </AnimatedSection>
+          </AnimatedSection> */}
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-3xl mx-auto">
+          {/* <div className="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-3xl mx-auto">
             {portfolioData.team.map((member, i) => (
               <AnimatedSection key={member.name} delay={i * 0.2}>
                 <div className="flex flex-col items-center text-center gap-6">
@@ -109,7 +109,7 @@ export default function AboutPage() {
                 </div>
               </AnimatedSection>
             ))}
-          </div>
+          </div> */}
 
           {/* Extended Team Images */}
           <div className="mt-20 pt-20 border-t border-border/30">

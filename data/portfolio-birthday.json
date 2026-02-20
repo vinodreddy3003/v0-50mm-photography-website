@@ -4,61 +4,61 @@
   "images": [
     {
       "id": "bday-1",
-      "src": "/images/birthday-1.jpg",
+      "src": "/Birthday/image1.JPG",
       "alt": "Birthday celebration photography",
       "title": "Celebration Moments"
     },
     {
       "id": "bday-2",
-      "src": "/images/birthday-2.jpg",
+      "src": "/Birthday/image2.JPG",
       "alt": "Birthday party candid shots",
       "title": "Candid Joy"
     },
     {
       "id": "bday-3",
-      "src": "/images/birthday-3.jpg",
+      "src": "/Birthday/image3.JPG",
       "alt": "Birthday cake cutting ceremony",
       "title": "Make a Wish"
     },
     {
       "id": "bday-4",
-      "src": "/images/birthday-4.jpg",
+      "src": "/Birthday/image4.JPG",
       "alt": "Birthday party group photo",
       "title": "Together"
     },
     {
       "id": "bday-5",
-      "src": "/images/birthday-5.jpg",
+      "src": "/Birthday/image5.JPG",
       "alt": "Birthday decorations photography",
       "title": "Party Perfect"
     },
     {
       "id": "bday-6",
-      "src": "/images/birthday-6.jpg",
+      "src": "/Birthday/image6.JPG",
       "alt": "Birthday milestone moment",
       "title": "Milestone"
     },
     {
       "id": "bday-7",
-      "src": "/images/birthday-7.jpg",
+      "src": "/Birthday/image7.JPG",
       "alt": "Birthday celebration details",
       "title": "Special Details"
     },
     {
       "id": "bday-8",
-      "src": "/images/birthday-8.jpg",
+      "src": "/Birthday/image8.JPG",
       "alt": "Birthday smiling faces",
       "title": "Happy Faces"
     },
     {
       "id": "bday-9",
-      "src": "/images/birthday-9.jpg",
+      "src": "/Birthday/image9.JPG",
       "alt": "Birthday fun and laughter",
       "title": "Fun Times"
     },
     {
       "id": "bday-10",
-      "src": "/images/birthday-10.jpg",
+      "src": "/Birthday/image10.JPG",
       "alt": "Birthday cherished memories",
       "title": "Memories Forever"
     }

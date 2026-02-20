@@ -23,7 +23,7 @@ const PORTFOLIO_CATEGORIES = [
   { id: "prewedding", name: "Pre-Wedding" },
   { id: "modeling", name: "Modeling" },
   { id: "birthday", name: "Birthday" },
-  { id: "other", name: "Other" },
+  // { id: "other", name: "Other" },
 ]
 
 export default function PortfolioPage() {
