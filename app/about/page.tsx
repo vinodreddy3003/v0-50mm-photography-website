@@ -149,7 +149,7 @@ export default function AboutPage() {
                 <div className="flex flex-col items-center text-center gap-6">
                   <div className="relative w-72 h-80 overflow-hidden rounded-lg group cursor-pointer">
                     <Image
-                      src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/WhatsApp%20Image%202026-02-20%20at%2015.55.24-hCMV24X9iByNL3mAxHmI8M5z0eBxBk.jpeg"
+                      src="/bhavani.jpeg"
                       alt="Bhavani - Creative Partner"
                       fill
                       sizes="288px"
