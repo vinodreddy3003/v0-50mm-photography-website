@@ -15,16 +15,22 @@ const playfair = Playfair_Display({
   display: "swap",
 });
 
+export const viewport = {
+  width: "device-width",
+  initialScale: 1,
+};
+
 export const metadata: Metadata = {
   metadataBase: new URL("https://50mmphotography.in"),
 
   title: {
-    default: "50mm Photography | Wedding, Pre-Wedding & Creative Shoots",
+    default:
+      "Wedding Photographer in India | 50mm Photography – Candid & Cinematic",
     template: "%s | 50mm Photography",
   },
 
   description:
-    "50mm Photography is a premium photography studio specializing in wedding, engagement, pre-wedding, birthday, modeling, and creative shoots. We capture timeless moments with emotion and elegance.",
+    "50mm Photography is a professional wedding and event photography studio in India specializing in candid, cinematic, pre-wedding, engagement, birthday and portfolio shoots. Book your photoshoot today.",
 
   keywords: [
     // Brand
@@ -149,7 +155,8 @@ export const metadata: Metadata = {
     locale: "en_IN",
     url: "https://50mmphotography.in",
     siteName: "50mm Photography",
-    title: "50mm Photography | Wedding, Pre-Wedding & Creative Shoots",
+    title:
+      "Wedding Photographer in India | 50mm Photography – Candid & Cinematic",
     description:
       "Premium photography studio for weddings, engagements, pre-weddings, birthdays, modeling portfolios and creative shoots. Capturing timeless moments with emotion and style.",
     images: [
@@ -164,10 +171,11 @@ export const metadata: Metadata = {
 
   twitter: {
     card: "summary_large_image",
-    title: "50mm Photography | Wedding, Pre-Wedding & Creative Shoots",
+    title:
+      "Wedding Photographer in India | 50mm Photography – Candid & Cinematic",
     description:
       "Premium photography studio capturing weddings, pre-weddings, engagements, birthdays and creative portraits with emotion and elegance.",
-    images: ["/images/og-image.jpg"],
+    images: ["/Model shoot/image1.png"],
   },
 
   alternates: {
